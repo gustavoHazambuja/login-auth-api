@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties.Jwt;
 import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
@@ -44,7 +43,7 @@ public class TokenService {
                     .withIssuer("login-auth-api")
                     .build() // Constrói o objeto para fazer a verificação
                     .verify(token) // Verifica o token
-                    .getSubject(); // Pega o valor gerado do token
+                    .getSubject(); // Retorna o email do usuário
         }catch(JWTVerificationException exception){
             return null;
         }
